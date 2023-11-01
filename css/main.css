@@ -5,7 +5,7 @@
 }
 
 :root {
---index: cal(1vw + 1vh);
+--index: calc(1vw + 1vh);
 }
 body {
     background-color: #141414;
@@ -21,6 +21,7 @@ body {
 .items {
     display: flex;
     gap: .4rem;
+    perspective: 500px;
 }
 
 .item {
@@ -30,4 +31,29 @@ body {
     background-size: cover;
     background-position: center;
     cursor: pointer;
+}
+.items .item.hover {
+    transform: translateZ(calc(var(--index) * 10));
+}
+
+/* Right*/
+
+.items .item.hover + * {
+    transform: translateZ(calc(var(--index) * 8.5));
+    z-index: -1;
+}
+
+.items .item.hover + * + * {
+    transform: translateZ(calc(var(--index) * 5.6));
+    z-index: -2;
+}
+
+.items .item.hover + * + * + * {
+    transform: translateZ(calc(var(--index) * 2.4));
+    z-index: -3;
+}
+
+.items .item.hover + * + * + * + * {
+    transform: translateZ(calc(var(--index) * .6));
+    z-index: -4;
 }
