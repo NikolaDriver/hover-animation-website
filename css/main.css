@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+--index: cal(1vw + 1vh);
+}
+body {
+    background-color: #141414;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.items {
+    display: flex;
+    gap: .4rem;
+}
+
+.item {
+    background-color: #222;
+    width: calc(var(--index) * 3);
+    height: calc(var(--index) * 12);
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
