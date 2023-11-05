@@ -6,6 +6,7 @@
 
 :root {
 --index: calc(1vw + 1vh);
+--transition: cubic-bezier(.01,.76,0,.99);
 }
 body {
     background-color: #141414;
@@ -31,29 +32,48 @@ body {
     background-size: cover;
     background-position: center;
     cursor: pointer;
+    transition: transform 1.25s var(--transition);
 }
-.items .item.hover {
+.items .item:hover {
     transform: translateZ(calc(var(--index) * 10));
 }
 
 /* Right*/
 
-.items .item.hover + * {
-    transform: translateZ(calc(var(--index) * 8.5));
+.items .item:hover+ * {
+    transform: translateZ(calc(var(--index) * 8.5)) rotateY(35deg);
     z-index: -1;
 }
 
-.items .item.hover + * + * {
-    transform: translateZ(calc(var(--index) * 5.6));
+.items .item:hover+ * + * {
+    transform: translateZ(calc(var(--index) * 5.6)) rotateY(40deg);
     z-index: -2;
 }
 
-.items .item.hover + * + * + * {
-    transform: translateZ(calc(var(--index) * 2.4));
+.items .item:hover+ * + * + * {
+    transform: translateZ(calc(var(--index) * 2.4)) rotateY(30deg);
     z-index: -3;
 }
 
-.items .item.hover + * + * + * + * {
-    transform: translateZ(calc(var(--index) * .6));
+.items .item:hover+ * + * + * + * {
+    transform: translateZ(calc(var(--index) * .6)) rotateY(14deg);
     z-index: -4;
+}
+
+/*  Left  */
+
+.item:has(+ :hover) {
+    transform: translateZ(calc(var(--index) * 8.5)) rotateY(-35deg);
+}
+
+.item:has(+ * + :hover) {
+    transform: translateZ(calc(var(--index) * 5.6)) rotateY(-40deg);
+}
+
+.item:has(+ * + * + :hover) {
+    transform: translateZ(calc(var(--index) * 2.4)) rotateY(-30deg);
+}
+
+.item:has(+ * + * + * + :hover) {
+    transform: translateZ(calc(var(--index) * .6)) rotateY(-14deg);
 }
